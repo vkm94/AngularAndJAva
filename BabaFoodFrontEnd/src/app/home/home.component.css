@@ -1,0 +1,21 @@
+.search-icon{
+    color:blue;
+    position: relative;
+    z-index: 10;
+    right: 20%;
+    top: 65%;
+
+}
+.item a:hover{
+color: blue;
+}
+.card img {
+    transition: 0.3s ease-in-out;
+   
+
+}
+.card .img:hover {
+    transition: 0.3s ease-in-out;
+    transition: scale(1.1);
+
+}
