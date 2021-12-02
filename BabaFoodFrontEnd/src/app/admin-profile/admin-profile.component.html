@@ -1,35 +1,46 @@
 <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper"  [ngClass]="status ? 'hide' : 'show'">
-      <div class="sidebar-heading">Therichpost </div>
-      <div class="list-group list-group-flush">
-        <a href="/home" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
-      </div>
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="status ? 'hide' : 'show'">
+    <div class="sidebar-heading">Therichpost </div>
+    <div class="list-group list-group-flush">
+      <a href="/home" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+      <button class="list-group-item list-group-item-action bg-light" (click)="open(content)">View Orders</button>
+      <button class="list-group-item list-group-item-action bg-light" (click)="AdddHotel(largecontent)">Add
+        Hotels</button>
+      <button class="list-group-item list-group-item-action bg-light" (click)="addMenu(form)">Add menu</button>
+      <button class="list-group-item list-group-item-action bg-light" (click)="ChangePassword(password)">Change
+        Password</button>
+      <button class="list-group-item list-group-item-action bg-light" (click)="ViewItems(all)">View Items</button>
+      <button class="list-group-item list-group-item-action bg-light" (click)="AddItems(items)">Add Items to
+        hotel</button>
+      <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal"
+        data-target="#exampleModal">Events</a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+      <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
     </div>
-    <!-- /#sidebar-wrapper -->
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-       
-        <div class="container-fluid">
-          <button class="btn btn-primary" (click)="clickEvent()">Toggle Menu</button>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
-              </li>
-               <li class="nav-item">
-                <a class="nav-link" (click)="logout()">Log Out</a>
-              </li>
-             <!-- <li class="nav-item dropdown">
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <div class="container-fluid">
+        <button class="btn btn-primary" (click)="clickEvent()">Toggle Menu</button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="logout()">Log Out</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown
                 </a>
@@ -43,21 +54,322 @@
               <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li> -->
-            </ul>
-            <!-- <form class="d-flex">
+          </ul>
+          <!-- <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="button">Search</button>
             </form> -->
+        </div>
+      </div>
+    </nav>
+    <div class="card" style="width: 100%;">
+
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+          <button type="button" class="close" aria-label="Close" (click)="openXl(content)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <div class="modal-body modal-xl" style="width: 1000px;">
+          <div class="modal-xl modelt ">
+
+            <div class="d-flex  col-md-12 mb-3">
+              <table class="table table-orderd">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>Product name</th>
+                    <th>User Id</th>
+                    <th>Product Id</th>
+                    <th>Hotel name</th>
+                    <th>Product Id</th>
+                    <th>Transaction Id</th>
+                    <th>Order Timing</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let result of result" ng-style="{'width':1000px}">
+                    <td>{{result.id}}</td>
+                    <td>{{result.pname}}</td>
+                    <td>{{result.uid}}</td>
+                    <td>{{result.pid}}</td>
+
+                    <td>{{result.hname}}</td>
+                    <td>{{result.order_time}}</td>
+                    <td>{{result.quan}}</td>
+                    <td>{{result.tid}}</td>
+                    <td>{{result.pname}}</td>
+                    <td>{{result.grandTotal}}</td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </nav>
-      <div class="container-fluid">
-        <h1 class="mt-4">Angular 11 Bootstrap 5 Simple Sidebar Template</h1>
-        <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration.</p>
-      </div>
+
+
+
+
+
+        <div class="modal-footer">
+
+          <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Close</button>
+
+
+        </div>
+      </ng-template>
+
+
+
+      <ng-template #largecontent let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Add Hotel!</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.close('Ok click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <div class="modal-body modal-xl">
+          <div class="modal-xl modelt ">
+
+            <div class="d-flex  col-md-12 mb-3">
+              <form id="hotelForm" (ngSubmit)="addHotels()">
+                <div [formGroup]="hotelForm">
+                <div class="row mb-3">
+                  <div class="col"><label for="">Hotel Name </label> : </div>
+                  <div class="col"><input type="text" formControlName="name" class="form-control" name="name" id="name" /></div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col"><label for="">Contact Number</label> : </div>
+                  <div class="col"><input type="text" formControlName="cno" class="form-control" name="cno" id="cno" /></div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col"><label for="">Address </label> : </div>
+                  <div class="col"><input type="text" formControlName="addr" class="form-control" name="addr" id="addr" /></div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col"><label for="">Hotel image</label> : </div>
+                  <div class="col"><input type="text" formControlName="img" class="form-control" name="img" id="img" /></div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col"><label for="">Description </label> : </div>
+                  <div class="col"><input type="text" formControlName="descr" class="form-control" name="descr" id="descr" /></div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col"><label for="">Supply </label> : </div>
+                  <div class="col"><select formControlName="supply" id="supply"  name="supply" class="form-control">
+                      <option value="Available">Available</option>
+                      <option value="unAvailable">Un Available</option>
+
+                    </select></div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col"><label for="">Class </label> : </div>
+                  <div class="col"><select formControlName="class" id="class" class="form-control">
+                      <option value="Ac">Ac</option>
+                      <option value="non-ac">Non Ac</option>
+                    </select></div>
+                </div>
+                <div class="row mb-3">
+                  <input type="submit" class="form-control" />
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="modal-footer">
+
+          <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Close</button>
+
+
+        </div>
+      </ng-template>
+
+
+
+
+      <ng-template #form let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Add Menu!</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.close('Ok click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <div class="modal-body modal-xl">
+          <div class="modal-xl modelt ">
+           
+            <div class="d-flex  col-md-12 mb-3">
+              <form  id="AddMenu"  (ngSubmit)="addMenuItems()">
+
+          
+                <div [formGroup]="AddMenu">
+                    <div class="mb-3">
+                <input type="text"  formControlName="name" class="form-control" id="name" name="menuname"  placeholder="Enter Menu name">
+                </div>
+                <div class="mb-3">
+                <input type="text" formControlName="descr" class="form-control" id="descr" name="descr"  placeholder="Enter Menu Description">
+                </div>
+                <div class="mb-3">
+            
+                <input type="text" formControlName="img" class="form-control" id="img" name="img"  placeholder="Enter Menu image url"  >
+                </div>
+               
+                <input type="submit" name="save" class="btn btn-outline-primary form-control"  id="go" value="Save Menu"></div>
+               
+            </form>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="modal-footer">
+
+          <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Close</button>
+
+
+        </div>
+      </ng-template>
+      <ng-template #password let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title"> Change password!</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.close('Ok click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <div class="modal-body modal-xl">
+          <div class="modal-xl modelt ">
+
+            <div class="d-flex  col-md-12 mb-3">
+              <form id="passwordForm"  (ngSubmit)="changePassword()">
+                <div  [formGroup]="passwordForm"> 
+                <div class="row mb-3">
+                  <div class="col"><label for="">Enter Password </label> : </div>
+                  <div class="col "><input type="password" formControlName="password" class="form-control" name="password" id="password"></div>
+                  </div>
+                <div class="row mb-3">
+                  <div class="col"><label for="">Confirm password </label> : </div>
+                <div class="col"> <input type="password" formControlName="cpassword" class="form-control" name="cpassword" id="cpassword"></div></div>
+                <input type="submit" id="savemenu"class="btn btn-primary" >
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="modal-footer">
+
+          <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Close</button>
+
+
+        </div>
+      </ng-template>
+
+      <ng-template #items let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title"> Add items to hotel !</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.close('Ok click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <div class="modal-body modal-xl">
+          <div class="modal-xl modelt ">
+
+            <div class="d-flex  col-md-12 mb-3">
+              <form id="additemToHotel"  (ngSubmit)="addMenuToHotel()">
+                
+               <h6>Hotel name</h6> 
+
+               <div class="row mb-3"  [formGroup]="additemToHotel"> 
+                 
+              <div class="col-sm-8 mb-3">
+                <select  formControlName="hname" name="hname" id="hname"  class="form-control"change="selectHotelName($event)">
+                  <option *ngFor="let hotelname of hotelname" [selected]  [value]="hotelname.name">{{hotelname.name}} </option>
+                 </select>
+                </div>
+                <div class="col-sm-8 mb-3 ">
+                  <select name="menu" id="menu"  formControlName="menu" class="form-control" change="selectMenuName($event)" >
+                    <option *ngFor="let result1 of result1" [value]="result1.name" >{{result1.name}} </option>
+                   </select> 
+                 </div>
+                 <div class="col-sm-8 mb-3">
+                  <input type="text"  formControlName="img" name="img" id="img" class="form-control" placeholder="Add image">
+                </div>
+                 <div class="col-sm-8 mb-3">
+                   <input type="text"  formControlName="price" name="price" id="price" class="form-control" placeholder="Add price">
+                 </div>
+                 <input type="submit" id="savemenu"class="btn btn-primary" >
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="modal-footer">
+
+          <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Close</button>
+
+
+        </div>
+      </ng-template>
+
+      <ng-template #all let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title"> View All Items !</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.close('Ok click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <div class="modal-body modal-xl">
+          <div class="modal-xl modelt ">
+
+            <div class="d-flex  col-md-12 mb-3">
+              <form>
+
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="modal-footer">
+
+          <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Close</button>
+
+
+        </div>
+      </ng-template>
     </div>
-    <!-- /#page-content-wrapper -->
   </div>
-  <!-- /#wrapper -->
-  
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->

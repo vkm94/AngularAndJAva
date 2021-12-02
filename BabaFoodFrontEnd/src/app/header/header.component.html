@@ -9,9 +9,14 @@
     </div>
    
          <div class="form-group w-50 mr-auto mt-3">
-          <input type="text" class="form-control ml-5 " name="search" placeholder="Search Menu Items">
+          <form id="SearchForm" >
+            <div  [formGroup]="SearchForm"> 
+          <input type="text" formControlName="search" class="form-control ml-5 " name="search" id="search" placeholder="Search Menu Items">
          </div>
-         <span class="fas fa-search search-icon"></span>
+         <span class="fas fa-search search-icon" (click)="search()"></span>
+        
+         </form>
+        </div>
          <button class="btn btn-primary" routerLink="cart">
           <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
           <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>

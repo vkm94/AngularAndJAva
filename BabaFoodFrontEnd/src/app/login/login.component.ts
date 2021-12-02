@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { RestApiService } from '../rest-api.service';
-import { User } from './user.model';
+import { User } from '../login/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   email : string;
   pass:string;
   message:any;
-  result:User;
+  result:{};
   constructor(private service:RestApiService ,private route: ActivatedRoute, private router: Router) {
 
    }
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     console.log(sessionStorage.getItem('type'));
 
-  if(sessionStorage.getItem('uid')){
+  if(sessionStorage.get){
     if(sessionStorage.getItem('type')==='Admin'){
       console.log("Admin profile");
        this.router.navigate([`/adminProfile`], { queryParams: { redirectTo: this.route.snapshot.url } });
@@ -55,18 +55,26 @@ export class LoginComponent implements OnInit {
     var route = this.router; 
    this.user.email=this.email;
     this.user.pass=this.pass;
+    //alert(this.user.email);
+    //alert(this.user.pass);
    let res= this.service.login(this.user);
    
   let UserData=this.service.getdata(this.user);
   
+  
   UserData.subscribe(result=>{
+
+     
     localStorage.setItem('userdata',JSON.stringify(result));
+  
+    console.log( result);
+    console.log( result.email);
 sessionStorage.setItem('uid',result.email);
 sessionStorage.setItem('type',result.type);
-//localStorage.setItem('uid',result.email);
+localStorage.setItem('uid',result.email);
 localStorage.setItem('type',result.type);
 
-  console.log(localStorage.getItem("uid"));
+ // console.log(localStorage.getItem("userdata"));
   console.log(localStorage.getItem("type"));
 
   })

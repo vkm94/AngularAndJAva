@@ -23,7 +23,7 @@ result:any;
        result.subscribe(data=>{
          this.result=data;
       //return result;
-       //console.log(data);
+       console.log(data);
            this.result.forEach((a:any) => {
            Object.assign(a,{quantity:1,total:a.price});
            });
