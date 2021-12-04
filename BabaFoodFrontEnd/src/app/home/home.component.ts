@@ -5,6 +5,9 @@ import { Home } from './home.model';
 import { Menu } from './menu.modal';
 import { Key } from 'selenium-webdriver';
 import { CartService } from '../cart/cart.service';
+import { HeaderService } from '../header/header.service';
+import {PofileService} from '../admin-profile/pofile.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,11 +15,16 @@ import { CartService } from '../cart/cart.service';
 })
 export class HomeComponent implements OnInit {
 home:Home=new Home();
-
+//profile:PofileService=new PofileService();
+data2:any=[];
 
 result:any;
   data1: any;
-  constructor(private service:HomeService,private route: ActivatedRoute, private router: Router,private cartservice:CartService) { }
+  constructor(private service:HomeService,private route: ActivatedRoute, private router: Router,private cartservice:CartService,private headerservice:HeaderService) { 
+    // getData(){
+    //   this.data2=this.headerservice.search();
+    // }
+  }
 
   ngOnInit() {
     let result=this.service.getProducts(this.home);
@@ -40,6 +48,8 @@ result:any;
     })
    
   }
+  
+  //var data1=;
   addToCart(result:any){
    this.cartservice.addToCart(result);
     alert("added");
